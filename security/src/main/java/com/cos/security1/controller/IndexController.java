@@ -78,8 +78,13 @@ public class IndexController {
         //
         return "index";     //src/main/resources/templates/index.mustache
     }
+
+    /**
+     * 일반 로그인, Oauth 로그인 둘 다 사용 가능해짐
+     */
     @GetMapping("/user")
-    public @ResponseBody String user(){
+    public @ResponseBody String user(@AuthenticationPrincipal PrincipalDetails principalDetails){
+        System.out.println("principalDetails : " + principalDetails.getUser());
         return "user";
     }
 

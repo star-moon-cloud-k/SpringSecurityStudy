@@ -19,11 +19,6 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     @Autowired
     private PrincipalOauth2UserService principalOauth2UserService;
 
-    @Bean       //해당 메서드의 리턴되는 오브젝트를 IoC로 등록해줌
-    public BCryptPasswordEncoder encodePwd(){
-        return new BCryptPasswordEncoder();
-    }
-
     // 1. 코드 받기(인증이 됨)
     // 2. 멕세스 토큰 받기(권한 생김)
     // 3.사용자 프로필 정보 가져옴
