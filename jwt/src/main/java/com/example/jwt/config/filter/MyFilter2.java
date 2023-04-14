@@ -1,4 +1,4 @@
-package com.example.jwt.filter;
+package com.example.jwt.config.filter;
 
 import javax.servlet.*;
 import java.io.IOException;

@@ -1,7 +1,7 @@
 package com.example.jwt.config;
 
-import com.example.jwt.filter.MyFilter1;
-import com.example.jwt.filter.MyFilter2;
+import com.example.jwt.config.filter.MyFilter1;
+import com.example.jwt.config.jwt.JwtAuthenticationFilter;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
@@ -26,6 +26,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .and()
                 .addFilter(corsFilter)      //@CrossOrigin(인증x) , 시큐리티 필터에 등록 (인증O)
                 .formLogin().disable()
+                .addFilter(new JwtAuthenticationFilter(authenticationManager()))   //formlogin 방식 대신 jwt 토큰활용하여 필터링 AuthenticationManager 가 필요함 _WebSecurityConfigurerAdapter가 가지고있음
                 .httpBasic().disable()      //http 기본 인증방식을 사용하지 않음
                 .authorizeRequests()
                 .antMatchers("/api/v1/user/**")
